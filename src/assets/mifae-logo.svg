@@ -1,0 +1,15 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MiFAE">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f4c81" />
+      <stop offset="100%" stop-color="#1f78b4" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="24" fill="#102840" />
+  <path d="M36 36h48v12H36z" fill="url(#blueGrad)" />
+  <path d="M36 60h24v12H36z" fill="#ffffff" opacity="0.8" />
+  <path d="M36 84h30v12H36z" fill="url(#blueGrad)" opacity="0.9" />
+  <circle cx="90" cy="36" r="14" fill="#ffffff" opacity="0.9" />
+  <circle cx="90" cy="36" r="8" fill="url(#blueGrad)" />
+  <text x="16" y="114" fill="#ffffff" font-family="Inter, sans-serif" font-size="16" font-weight="700">MiFAE</text>
+</svg>
