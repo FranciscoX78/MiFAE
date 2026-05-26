@@ -131,31 +131,35 @@ export default function App() {
     return option ? option.type : 'droga';
   };
 
-  const buildItemText = (item) => {
-    const itemType = findItemType(item.nombre);
-    if (itemType === 'accion') {
-      return [item.nombre, item.dosis].filter(Boolean).join(' ').trim();
-    }
-    return [item.nombre, item.dosis, item.unidad, item.via].filter(Boolean).join(' ').trim();
-  };
+  const buildItemPayload = (item) => ({
+    tipo: findItemType(item.nombre),
+    nombre: item.nombre || '',
+    dosis: item.dosis || '',
+    unidad: item.unidad || '',
+    via: item.via || '',
+  });
 
   // Construye el JSON que irá dentro del QR. Se mantiene la estructura exacta
   // requerida por pFAE: siempre incluye `medico`, `induccion`, `mantenimiento`, `despertar`.
-  // Cada item se serializa a texto legible por pFAE (ej. "Propofol 150 mg EV").
+  // Cada item ahora viaja estructurado para que pFAE pueda distinguir drogas y acciones.
   const buildPayload = () => {
     return {
       medico: MEDICO,
       induccion: phases.induccion.map((combo) => ({
         nombre: combo.nombre || 'Combo sin nombre',
-        items: combo.items.map(buildItemText).filter(Boolean),
+        items: combo.items.map(buildItemPayload).filter((item) => item.nombre),
       })),
       mantenimiento: phases.mantenimiento.map((combo) => ({
         nombre: combo.nombre || 'Combo sin nombre',
-        items: combo.items.map(buildItemText).filter(Boolean),
+        items: combo.items.map(buildItemPayload).filter((item) => item.nombre),
+      })),
+      educcion: phases.despertar.map((combo) => ({
+        nombre: combo.nombre || 'Combo sin nombre',
+        items: combo.items.map(buildItemPayload).filter((item) => item.nombre),
       })),
       despertar: phases.despertar.map((combo) => ({
         nombre: combo.nombre || 'Combo sin nombre',
-        items: combo.items.map(buildItemText).filter(Boolean),
+        items: combo.items.map(buildItemPayload).filter((item) => item.nombre),
       })),
     };
   };
