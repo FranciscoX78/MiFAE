@@ -7,7 +7,6 @@ export default function Header({ medico }) {
         <img src={logoUrl} alt="Logo MiFAE" className="brand-logo" />
         <div>
           <p className="brand-name">MiFAE</p>
-          <p className="brand-tag">Configurador pFAE</p>
         </div>
       </div>
       <div className="doctor-chip">

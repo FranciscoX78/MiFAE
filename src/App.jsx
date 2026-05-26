@@ -19,7 +19,7 @@ const INITIAL_STATE = {
 const PHASES = [
   { key: 'induccion', label: 'Inducción' },
   { key: 'mantenimiento', label: 'Mantenimiento' },
-  { key: 'despertar', label: 'Despertar' },
+  { key: 'despertar', label: 'Educcion' },
 ];
 
 const DROGAS_ACCIONES = [
@@ -282,7 +282,7 @@ export default function App() {
         <section className="hero-card">
           <div>
             <h2>Configura tus combos</h2>
-            <p>Agrega combos para Inducción, Mantenimiento y Despertar, luego genera un QR elegante.</p>
+            <p>Agrega combos para Inducción, Mantenimiento y Educcion.</p>
           </div>
           {showInstallButton && (
             <button className="secondary-button" type="button" onClick={handleInstallClick}>
@@ -313,7 +313,7 @@ export default function App() {
 
         <div className="actions-row">
           <button className="primary-button" type="button" onClick={handleGenerateQR}>
-            Generar QR para pFAE
+            Generar QR
           </button>
           {warningMessage && <span className="warning-text">{warningMessage}</span>}
         </div>
