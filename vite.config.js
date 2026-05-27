@@ -11,6 +11,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
+      minify: false,
       includeAssets: ['icons/*.png'],
       manifest: {
         name: 'MiFAE',
